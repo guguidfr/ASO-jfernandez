@@ -11,7 +11,20 @@ else
     if [ $resp = y ] || [ $resp = Y ]
     then
         mkdir $ruta
-        if 
+        if [ -d $ruta ]
+        then
+            echo "Directorio creado correctamente."
+            exit 0
+        else
+            echo "Ha habido un error y no se ha creado el directorio."
+            exit 1
+        fi
     elif [ $resp = n ] || [ $resp = N ]
     then
-        echo "El directorio no se ha creado"
+        echo "El directorio no se ha creado."
+        exit 0
+    else
+        echo "Ha ocurrido un error inesperado."
+        exit 1
+    fi
+fi
