@@ -52,6 +52,9 @@ then
     then
         echo "El parámetro es un enlace simbólico."
         check $1
+    else
+        echo "Ha habido un error con el parámetro recibido."
+        exit 1
     fi
 else
     echo "Número de parámetros incorrecto."
