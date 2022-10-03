@@ -6,7 +6,7 @@
 function check_exist () {
     id -u $1 > /dev/null 2>&1
     local exists_id=$?
-    if [ $exists_id -eq 0 ]
+    if [ $exists_id -eq 0 ] # Podrías hacer del tirón estas líneas en una --> if id -u $1 > /dev/null 2>&1 
     then
         return 0
     else
