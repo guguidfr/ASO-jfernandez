@@ -8,9 +8,11 @@ then
     echo "El directorio ya existe."
 else
     read -p "El directorio no existe. ¿Desea crearlo? [y/n]: " resp
+    # lpaneque: Recuerda que las cadenas de texto van entre comillas $resp = "y"
     if [ $resp = y ] || [ $resp = Y ]
     then
         mkdir $ruta
+        # lpaneque: Otra forma de hacer esto: if mkdir $ruta; then
         if [ -d $ruta ]
         then
             echo "Directorio creado correctamente."
@@ -19,11 +21,13 @@ else
             echo "Ha habido un error y no se ha creado el directorio."
             exit 1
         fi
+    # lpaneque: Igual que antes, texto entre comillas
     elif [ $resp = n ] || [ $resp = N ]
     then
         echo "El directorio no se ha creado."
         exit 0
     else
+        # lpaneque: Más bien, ha introducido un valor incorrecto.
         echo "Ha ocurrido un error inesperado."
         exit 1
     fi
