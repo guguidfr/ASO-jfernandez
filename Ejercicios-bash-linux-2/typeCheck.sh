@@ -5,6 +5,7 @@
 
 #Comprobar el número de parámetros pasados como argumentos
 
+# lpaneque: Y este código comentado?
 # if [ $# -eq 1 ]
 # then
 #     echo "Un parámetro"
@@ -56,6 +57,7 @@ then
         echo "Ha habido un error con el parámetro recibido."
         exit 1
     fi
+    # Podrías hacer el check $1 aquí, y te ahorrarías dos líneas de código.
 else
     echo "Número de parámetros incorrecto."
     exit 1
