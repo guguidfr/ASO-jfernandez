@@ -3,9 +3,10 @@
 # 30/09/2022
 # Script para comprobar si un fichero/documento existe y los permisos que tenemos sobre el mismo
 
-#Comprobar el número de parámetros pasados como argumentos
+# >>> Comprobar el número de parámetros pasados como argumentos <<<
 
 # lpaneque: Y este código comentado?
+# José Daniel: Era para comprobar el funcionamiento del control de número de parámetros de entrada. Es lo que he comentado en la línea 6.
 # if [ $# -eq 1 ]
 # then
 #     echo "Un parámetro"
@@ -44,19 +45,17 @@ then
     if [ -f $1 ]
     then
         echo "El parámetro recibido es un fichero regular."
-        check $1
     elif [ -d $1 ]
     then
         echo "El parámetro recibido es un directorio."
-        check $1
     elif [ -L $1 ]
     then
         echo "El parámetro es un enlace simbólico."
-        check $1
     else
         echo "Ha habido un error con el parámetro recibido."
         exit 1
     fi
+    check $1 # Línea añadida el 04/10/2022
     # Podrías hacer el check $1 aquí, y te ahorrarías dos líneas de código.
 else
     echo "Número de parámetros incorrecto."

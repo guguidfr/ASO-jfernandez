@@ -9,7 +9,7 @@ then
 else
     read -p "El directorio no existe. ¿Desea crearlo? [y/n]: " resp
     # lpaneque: Recuerda que las cadenas de texto van entre comillas $resp = "y"
-    if [ $resp = y ] || [ $resp = Y ]
+    if [ $resp = "y" ] || [ $resp = "Y" ] # Comillas añadidas el 04/10/2022
     then
         mkdir $ruta
         # lpaneque: Otra forma de hacer esto: if mkdir $ruta; then
@@ -22,13 +22,13 @@ else
             exit 1
         fi
     # lpaneque: Igual que antes, texto entre comillas
-    elif [ $resp = n ] || [ $resp = N ]
+    elif [ $resp = "n" ] || [ $resp = "N" ] # Comillas añadidas el 04/10/2022
     then
         echo "El directorio no se ha creado."
         exit 0
     else
         # lpaneque: Más bien, ha introducido un valor incorrecto.
-        echo "Ha ocurrido un error inesperado."
+        echo "Ha ocurrido un error con valor introducido." # Correción hecha el 04/10/2022
         exit 1
     fi
 fi

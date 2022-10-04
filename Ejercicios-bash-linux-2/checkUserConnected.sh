@@ -15,7 +15,7 @@ function check_exist () {
 }
 
 function check_online () {
-    who | grep -oi $1 > /dev/null 2>&1  # Mejor who | grep -oi "^$1 "  y así no se cuela ningún resultado no deseado. Ejemplo, luis, luisa
+    who | grep -oi "^$1" > /dev/null 2>&1  # Mejor who | grep -oi "^$1 "  y así no se cuela ningún resultado no deseado. Ejemplo, luis, luisa
     local online=$?
     if [ $online -eq 0 ]
     then
