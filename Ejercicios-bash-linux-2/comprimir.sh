@@ -5,19 +5,19 @@
 function compress (){
     local err_code
     case "$1" in
-        #rar) ----- rar no está disponble para instalar en Debian, pero esto debería de funcionar si la instalación fuese posible
-        #    dpkg -s rar > /dev/null 2>&1
-        #    err_code=$?
-        #    if [ $err_code -eq 0 ]
-        #    then
-        #        rar a "$2".rar "$2"
-        #        echo "Archivo comprimido."
-        #    else
-        #        apt install -y rar > /dev/null 2>&1
-        #        rar a "$2".rar "$2"
-        #        echo "Archivo comprimido."
-        #    fi
-        #;;
+        rar) #----- rar no está disponble para instalar en Debian, pero esto debería de funcionar si la instalación fuese posible
+            dpkg -s rar > /dev/null 2>&1
+            err_code=$?
+            if [ $err_code -eq 0 ]
+            then
+                rar a "$2".rar "$2" > /dev/null 2>&1
+                echo "Archivo comprimido."
+            else
+                apt install -y rar > /dev/null 2>&1
+                rar a "$2".rar "$2" > /dev/null 2>&1
+                echo "Archivo comprimido."
+            fi
+        ;;
         zip)
             dpkg -s zip > /dev/null 2>&1
             err_code=$?

@@ -4,10 +4,10 @@
 # Comprueba si lo pasado como argumento es un fichero o un directorio
 
 ruta=$1
-if [ -f $ruta ]
+if [ -f "$ruta" ]
 then
     echo "$ruta es un fichero"
-elif [ -d $ruta ]
+elif [ -d "$ruta" ]
 then 
     echo "$ruta es un directorio"
 else
