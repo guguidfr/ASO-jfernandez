@@ -6,7 +6,7 @@
 function check_port (){
     if [ "$2" = "tcp" ]
     then
-        local port_status=$(ss -tulwn | grep -i :$1 | grep -i tcp | tail -1 | awk '{print $2}')
+        local port_status=$(ss -tulwn | grep -i :$1 | grep -i tcp | tail -1 | awk '{print $2}') # lpaneque: deberías quitar la u del comando si sólo quieres puertos tcp.
         echo "El estado del puerto $1 es: $port_status"
     else
         echo "El estado del puerto $1 es: $(ss -tulwn | grep -i :$1 | grep -i $2 | tail -1 | awk '{print $2}')"
@@ -24,9 +24,9 @@ then
     exit 1
 else
     #echo $(ss -tulwn | grep -i :"$entrada" | head -1 | awk '{print $5}')
-    if [ -n "$(ss -tulwn | grep -i :"$entrada" | head -1 | awk '{print $5}')" ]
+    if [ -n "$(ss -tulwn | grep -i :"$entrada" | head -1 | awk '{print $5}')" ] # lpaneque: Esto sería mejor hacerlo dentro de la función, para no tener que ejecutar varias veces el comando ss, además que en un instante el puerto puede estar en un estado y cambiar su estado cuando lo vuelvas a ejecutar.
     then
-        port_type=$(ss -tulwn | grep -i :"$entrada" | grep -i tcp)
+        port_type=$(ss -tulwn | grep -i :"$entrada" | grep -i tcp) # La opción -t del comando ss debería filtrar sólo los puertos tcp.
         port_code=$?
         if [ $port_code -eq 0 ]
         then
@@ -41,3 +41,4 @@ else
         echo "No se ha encontrado información acerca del puerto $entrada."
     fi
 fi
+# lpaneque: Creo que te puedes ahorar unas cuentas de líneas de código. No me queda clara la lógica de tu script.
