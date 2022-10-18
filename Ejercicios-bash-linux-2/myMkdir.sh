@@ -22,6 +22,7 @@ else
             exit 1
         fi
     # lpaneque: Igual que antes, texto entre comillas
+    # Aquí podrías utilizar: if [ "${resp,,}" = "n" ]; then o bien if [ "${resp^^}" = "N" ]; then 
     elif [ "$resp" = "n" ] || [ "$resp" = "N" ] # Comillas añadidas el 04/10/2022
     then
         echo "El directorio no se ha creado."
