@@ -1,0 +1,4 @@
+Pepito:mariadb,bash,php
+Manolita:java,mariadb,bash
+Fulanito:bash,python
+Menganita:mariadb,python,php
