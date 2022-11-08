@@ -1,0 +1,1 @@
+Copy-Item .\aso1\* -destination .\aso2\

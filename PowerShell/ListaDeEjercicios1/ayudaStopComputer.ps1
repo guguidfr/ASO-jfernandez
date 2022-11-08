@@ -1,0 +1,1 @@
+get-help stop-computer -examples
