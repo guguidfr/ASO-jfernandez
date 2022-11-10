@@ -12,6 +12,7 @@ function check_exist () {
     else
         return 1
     fi
+    # Aquí podrías devolver directamente el código de error del comando anterior, id -u $1 > /dev/null 2>&1; return $?
 }
 
 function check_online () {
