@@ -12,7 +12,7 @@ function check_port (){
         echo "El estado del puerto $1 es: $(ss -tulwn | grep -i :$1 | grep -i $2 | tail -1 | awk '{print $2}')"
     fi
 }
-
+# lpaneque: Mejor puerto o port, entrada?
 read -p "Introduce el puerto TCP que desea comprobar: " entrada
 if [ -z "$entrada" ]
 then
