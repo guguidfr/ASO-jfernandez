@@ -3,6 +3,8 @@
 # 30/09/2022
 # Comprobar estado de una máquina mediante un ping
 
+
+#lpaneque: machine=$1
 ping -c 4 $1 > /dev/null 2>&1
 check=$?
 if [ $check -eq 0 ]
