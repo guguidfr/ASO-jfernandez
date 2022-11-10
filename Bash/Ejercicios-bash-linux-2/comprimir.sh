@@ -90,3 +90,4 @@ else
         exit 1
     fi
 fi
+# lpaneque: Es buena práctica no intentar instalar software desde un script. Si no está instalado, mejor informar de ello y finalizar el script. 
