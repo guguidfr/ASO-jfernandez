@@ -2,10 +2,11 @@
 # José Daniel Fernández López
 # 11/11/2022
 function check_parameters(){
-    num_parametros=$#
+    num_parametros=$# # Establecemos nombres para los parámetros
     parametro_control="$1"
     if [ $num_parametros -eq 2 ] && [ "$parametro_control" == "-file" ]
     then
+        # Si la entrada es correcta, devolvemos como error un '0' y pasamos la ruta del archivo
         archivo="$2"
         echo $archivo
         return 0
@@ -15,21 +16,26 @@ function check_parameters(){
     fi
 }
 function create_report(){
+    # Declaramos las variables necesarias
     archivo_referencia="$1"
     total_down=0
     total_up=0
     num_maquinas=0
     separador="------------------------------------"
+    # Empezamos con el informe
     echo "$separador"
     echo "SERVER STATUS - DATE $(date "+%d/%m/%y %H:%M")"
     echo "$separador"
+    # El arhivo que leemos debe cumplir que:
+    # 1. Al final de cada línea haya un retorno de carro
+    # 2. Haya una línea vacía al final del documento
     while read -r linea
     do
         num_maquinas=$(($num_maquinas+1))
-        estado="DOWN"
+        estado="DOWN" # No es necesario establecer el estado 'DOWN' aquí, pero así establecemos un valor por defecto en cada iteración
         maquina=$(echo $linea | awk -F":" '{print $1}')
         direccion=$(echo -E $linea | awk -F":" '{print $2}' | sed 's/\r//g')
-        if ping $direccion -c 2 > /dev/null 2>&1
+        if ping $direccion -c 2 > /dev/null 2>&1 # Ocultamos la salida del comando 'ping'
         then
             estado="UP"
             echo "$maquina: $estado"
@@ -49,12 +55,11 @@ function create_report(){
     echo "END REPORT - BY JOSÉ DANIEL"
     echo "$separador"
 }
-archivo_fuente=$(check_parameters $@)
 report="serverStatus-JDFL-$(date "+%d%m%y-%H:%M").txt"
+archivo_fuente=$(check_parameters $@)
 if [ $? -eq 0 ]
 then
-    #echo $archivo_fuente
-    #touch "serverStatus-JDFL-$(date "+%d/%m/%y %H:%M").txt"
+
     create_report $archivo_fuente > "$report"
     cat "$report"
     entrada_valida=false
@@ -63,6 +68,12 @@ then
         read -p "¿Quieres guardar el informe? [Y/N]: " respuesta
         if [ "$respuesta" == "Y" ] || [ "$respuesta" == "y" ]
         then
+            if [ -a $report]
+            then
+                echo "El archivo de destino del informe ya existe. Se sobreescribirá."
+            else
+                echo "El arhivo de desitno no existe. Se creará."
+            fi
             entrada_valida=true
             echo "Guardando el informe..."
             sleep 2
