@@ -1,0 +1,16 @@
+------------------------------------
+SERVER STATUS - DATE 11/11/22 10:15
+------------------------------------
+PIKACHU: UP
+BULBASAUR: DOWN
+CHARMANDER: UP
+SQUIRTLE: DOWN
+------------------------------------
+STATISTICS
+------------------------------------
+4 --> Número de servidores analizados.
+2 --> Número de servidores UP.
+2 --> Número de servidores DOWN.
+------------------------------------
+END REPORT - BY JOSÉ DANIEL
+------------------------------------

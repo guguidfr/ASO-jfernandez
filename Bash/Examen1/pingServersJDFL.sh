@@ -70,9 +70,9 @@ then
         read -p "¿Quieres guardar el informe? [Y/N]: " respuesta
         if [ "$respuesta" == "Y" ] || [ "$respuesta" == "y" ]
         then
-            if [ -a $report]
+            if [ -a $report ]
             then
-                echo "El archivo de destino del informe ya existe. Se sobreescribirá."
+                echo "Se creará el archivo."
             else
                 echo "El arhivo de desitno no existe. Se creará."
             fi
