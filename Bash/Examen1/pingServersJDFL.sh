@@ -59,11 +59,13 @@ report="serverStatus-JDFL-$(date "+%d%m%y-%H:%M").txt"
 archivo_fuente=$(check_parameters $@)
 if [ $? -eq 0 ]
 then
-
+    # El archivo del informe se creará siempre, pero al preguntarle al usuario si lo quiere guardar:
+    # Si el usuario elige que sí, simplemente se hace un 'echo'.
+    # Si el usuario elige que no, se forzará la eliminación del informe sin que el usuario se dé cuenta.
     create_report $archivo_fuente > "$report"
     cat "$report"
     entrada_valida=false
-    while [ $entrada_valida == false ]
+    while [ $entrada_valida == false ] # Hasta que el usuario no introduzca un carácter válido, no se terminará el programa
     do
         read -p "¿Quieres guardar el informe? [Y/N]: " respuesta
         if [ "$respuesta" == "Y" ] || [ "$respuesta" == "y" ]
