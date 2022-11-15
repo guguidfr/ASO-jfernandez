@@ -1,0 +1,1 @@
+test-path -path ./notas.txt -pathtype leaf
