@@ -1,1 +1,1 @@
-Get-ChildItem c:\ -recurse | less
+Get-ChildItem c:\ -recurse

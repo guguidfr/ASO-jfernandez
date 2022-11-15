@@ -1,0 +1,1 @@
+Get-ChildItem c:\Users\JDray -recurse | less
