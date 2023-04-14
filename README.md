@@ -1,3 +1,2 @@
 # ASO - José Daniel
-Hello World!
----
+Este repositorio contiene los scripts de bash y powershell que he hecho a lo largo del curso.
